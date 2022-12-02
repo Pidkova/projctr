@@ -10,7 +10,7 @@
 //Також вкажіть значення по замовчуванню для всіх цих параметрів (на ваш вибір).
 //Функція має коректно працювати навіть якщо початкова дата пізніше ніж кінцева дата.
 
-function durationBetweenDates(
+/*function durationBetweenDates(
   start = "10 Nov 2022",
   end = "05 Nov 2022",
   units = "days"
@@ -59,10 +59,10 @@ function optimizer(data) {
     ])
   );
   return console.log(optimizedKeys);
-}
+}*/
 
-let updatedPriceData = optimizer(priceData);
-console.log(updatedPriceData); // {apples: '23.40', bananas: '48.00', oranges: '48.76'}
+//let updatedPriceData = optimizer(priceData);
+//console.log(updatedPriceData); // {apples: '23.40', bananas: '48.00', oranges: '48.76'}
 
 //---------Задача про рекурсію та ітерацію----------//
 
@@ -70,40 +70,44 @@ console.log(updatedPriceData); // {apples: '23.40', bananas: '48.00', oranges: '
 
 //1. Функцію яка рекурсивно буде знаходити суму всіх непарних додатніх чисел до якогось числа.
 
-function recursiveOddSumTo(number) {
-  if (number === 1) {
-    return number;
-  } else if (number % 2 !== 0) {
-    return number + recursiveOddSumTo(number - 2);
-  } else {
-    return recursiveOddSumTo(number - 1);
-  }
-}
+//function recursiveOddSumTo(number) {
+//  if (number === 1) {
+//    return number;
+//  } else if (number % 2 !== 0) {
+//   return number + recursiveOddSumTo(number - 2);
+//  } else {
+//    return recursiveOddSumTo(number - 1);
+//  }
+//}
 
-console.log(recursiveOddSumTo(1)); // 1
-console.log(recursiveOddSumTo(10)); // 25
+//console.log(recursiveOddSumTo(1)); // 1
+//console.log(recursiveOddSumTo(10)); // 25
 
 //2. Функцію яка ітеративно (в циклі) буде знаходити суму всіх непарних додатніх чисел до якогось числа.
 
-function iterativeOddSumTo(number) {
-  let sum = 0;
-
-  for (let i = 1; i <= number; i++) {
-    if (i % 2 !== 0) {
-      sum += i;
-    }
-  }
-  return sum;
-}
-console.log(iterativeOddSumTo(1)); // 1
-console.log(iterativeOddSumTo(10)); //25
+//function iterativeOddSumTo(number) {
+//  let sum = 0;
+//
+//  for (let i = 1; i <= number; i++) {
+//    if (i % 2 !== 0) {
+//      sum += i;
+//    }
+// }
+// return sum;
+//}
+//console.log(iterativeOddSumTo(1)); // 1
+//console.log(iterativeOddSumTo(10)); //25
 
 //
 //
 //
-
+//
 /*----Домашнє завдання за 18.11.2022------*/
 //
+//
+//
+//
+
 //1. Напишіть функцію `addThemAll` яка буде знаходити сумму усіх своїх аргументів незалежно від їх кількості (але без використання вбутованого об'єкту Math).
 //Використайте оператор розширення:
 
@@ -114,16 +118,16 @@ function addThemAll(...args) {
   return sum;
 }
 
-//console.log(addThemAll(2, 4)); // 6
-//console.log(addThemAll(1, 2, 3, 4)); // 10
-//console.log(addThemAll(5, 5, 10)); // 20
+console.log(addThemAll(2, 4)); // 6
+console.log(addThemAll(1, 2, 3, 4)); // 10
+console.log(addThemAll(5, 5, 10)); // 20
 
 //2. Задача на використання замикання. Напишіть функцію яка працює таким чином:
 /*---`multiply(a)(b)` // a * b ---*/
 
-//console.log(multiply(5)(5)); // 25
-//console.log(multiply(2)(-2)); // -4
-//console.log(multiply(4)(3)); // 12
+console.log(multiply(5)(5)); // 25
+console.log(multiply(2)(-2)); // -4
+console.log(multiply(4)(3)); // 12
 
 function multiply(a) {
   return function (b) {
@@ -141,13 +145,10 @@ function byProperty(property, direction) {
     sortingOrder = -1;
   }
   return function (a, b) {
-    // a should come before b in the sorted order
     if (a[property] < b[property]) {
       return -1 * sortingOrder;
-      // a should come after b in the sorted order
     } else if (a[property] > b[property]) {
       return 1 * sortingOrder;
-      // a and b are the same
     } else {
       return 0 * sortingOrder;
     }
@@ -250,17 +251,17 @@ let me = {
 //me.tellYourDrinkOfChoice()
 //me.askForUsersData()
 
-//6. А тепер зробіть всі свої методи з задачі `5` прив'язаними до контексту свого об'єкту - аби вони були захищені від перезапису об'єкту і їх можна було викликати в таймері:
+//6. **А тепер зробіть всі свої методи з задачі `5` прив'язаними до контексту свого об'єкту - аби вони були захищені від перезапису об'єкту і їх можна було викликати в таймері:**
 
 let securedGreetings = me.greetings.bind(me);
 let securedTellAboutFreeTime = me.tellAboutFreeTime.bind(me);
 let securedTellYourDrinkOfChoice = me.tellYourDrinkOfChoice.bind(me);
 let securedAskForUsersData = me.askForUsersData.bind(me);
 
-//setTimeout(securedGreetings, 1000);
-//setTimeout(securedTellAboutFreeTime, 2000);
-//setTimeout(securedTellYourDrinkOfChoice, 3000);
-//setTimeout(securedAskForUsersData, 4000);
+setTimeout(securedGreetings, 1000);
+setTimeout(securedTellAboutFreeTime, 2000);
+setTimeout(securedTellYourDrinkOfChoice, 3000);
+setTimeout(securedAskForUsersData, 4000);
 
 //7. **Напишіть функцію-декоратор яка вопвільнює виконання довільної функції на вказану кількість секунд.**
 
