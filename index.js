@@ -8,7 +8,7 @@
 //
 //
 
-//1. Напишіть функцію `addThemAll` яка буде знаходити сумму усіх своїх аргументів незалежно від їх кількості (але без використання вбутованого об'єкту Math).
+//**1. Напишіть функцію `addThemAll` яка буде знаходити сумму усіх своїх аргументів незалежно від їх кількості (але без використання вбутованого об'єкту Math).
 //Використайте оператор розширення:
 
 function addThemAll(...args) {
@@ -22,7 +22,7 @@ console.log(addThemAll(2, 4)); // 6
 console.log(addThemAll(1, 2, 3, 4)); // 10
 console.log(addThemAll(5, 5, 10)); // 20
 
-//2. Задача на використання замикання. Напишіть функцію яка працює таким чином:
+//**2. Задача на використання замикання. Напишіть функцію яка працює таким чином:
 /*---`multiply(a)(b)` // a * b ---*/
 
 console.log(multiply(5)(5)); // 25
@@ -35,7 +35,7 @@ function multiply(a) {
   };
 }
 
-/*3. Напишіть функцію яка буде використовуватись для сортування масиву фільмів. Функція буде приймати два аргумента:
+/**3. Напишіть функцію яка буде використовуватись для сортування масиву фільмів. Функція буде приймати два аргумента:
     - властивість за якою треба посортувати
     - опцію напрямку сортування, зростання чи спадання*/
 
@@ -81,14 +81,15 @@ const movies = [
   },
 ];
 
+// *****Питання: чому якщо виводити в консоль одночасно різні за аргументами сортування масиву, то до уваги береться лише останній?*****
+
 //console.log(movies.sort(byProperty("releaseYear", ">"))); // виведе масив фільмів посортованих по року випуску, від старішого до новішого
 //console.log(movies.sort(byProperty("runningTimeInMinutes", "<"))); // виведе масив фільмів посортованих по їх тривалості, від найдовшого до найкоротшого
 console.log(movies.sort(byProperty("movieName", ">"))); // виведе масив фільмів посортованих по назві, в алфавітному порядку
-// виведе масив фільмів посортованих по назві, в алфавітному порядку
 
-//4. Напишіть функцію detonatorTimer(delay), яка виводить в консоль число кожну секунду, починаючи з delay (ціле число) і в кінці замість 0 виведе 'BOOM!'. Напишіть її двома варіантами:**
+//**4. Напишіть функцію detonatorTimer(delay), яка виводить в консоль число кожну секунду, починаючи з delay (ціле число) і в кінці замість 0 виведе 'BOOM!'. Напишіть її двома варіантами:**
 
-// - Використовуючи setInterval
+// - setInterval
 
 function detonatorTimer(delay) {
   let count = delay;
@@ -105,7 +106,7 @@ function detonatorTimer(delay) {
 }
 //detonatorTimer(3);
 
-// - Використовуючи вкладений setTimeout
+// - setTimeout
 
 function detonatorTimer2(delay) {
   if (delay > 0) {
@@ -117,7 +118,7 @@ function detonatorTimer2(delay) {
 }
 //detonatorTimer2(3);
 
-//5.Напишіть об'єкт в якому опишіть свої довільні властивості та довільні методи (2-3 штуки) що ці властивості виводять.
+//**5.Напишіть об'єкт в якому опишіть свої довільні властивості та довільні методи (2-3 штуки) що ці властивості виводять.
 let me = {
   firstName: "Tetiana",
   lastName: "Pidkova",
@@ -146,24 +147,24 @@ let me = {
     prompt("Tell me smth about yourself...");
   },
 };
-//me.greetings()
+//me.greetings();
 //me.tellAboutFreeTime()
 //me.tellYourDrinkOfChoice()
 //me.askForUsersData()
 
-//6. **А тепер зробіть всі свої методи з задачі `5` прив'язаними до контексту свого об'єкту - аби вони були захищені від перезапису об'єкту і їх можна було викликати в таймері:**
+//**6. А тепер зробіть всі свої методи з задачі `5` прив'язаними до контексту свого об'єкту - аби вони були захищені від перезапису об'єкту і їх можна було викликати в таймері:**
 
 let securedGreetings = me.greetings.bind(me);
 let securedTellAboutFreeTime = me.tellAboutFreeTime.bind(me);
 let securedTellYourDrinkOfChoice = me.tellYourDrinkOfChoice.bind(me);
 let securedAskForUsersData = me.askForUsersData.bind(me);
 
-setTimeout(securedGreetings, 1000);
-setTimeout(securedTellAboutFreeTime, 2000);
-setTimeout(securedTellYourDrinkOfChoice, 3000);
-setTimeout(securedAskForUsersData, 4000);
+//setTimeout(securedGreetings, 1000);
+//setTimeout(securedTellAboutFreeTime, 2000);
+//setTimeout(securedTellYourDrinkOfChoice, 3000);
+//setTimeout(securedAskForUsersData, 4000);
 
-//7. **Напишіть функцію-декоратор яка вопвільнює виконання довільної функції на вказану кількість секунд.**
+//**7. Напишіть функцію-декоратор яка вопвільнює виконання довільної функції на вказану кількість секунд.**
 
 function someFunction(weather) {
   console.log(`It seems like the weather today is ${weather}`);
@@ -179,4 +180,4 @@ function slower(func, seconds) {
 
 let slowedSomeFunction = slower(someFunction, 5); // обгортаєте свою довільну функцію 'someFunction' в декоратор
 
-slowedSomeFunction("snowy"); /* викликаєте декоратор */
+slowedSomeFunction("gloomy"); /* викликаєте декоратор */
