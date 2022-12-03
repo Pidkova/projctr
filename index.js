@@ -1,183 +1,36 @@
 //
 //
 //
-//
-/*----Домашнє завдання за 18.11.2022------*/
-//
+/*----Домашнє завдання за 28.11.2022------*/
 //
 //
 //
+//
+//1. **Задача на селектори:**
+//Для сторінки з вебінару ([https://github.com/Niko42na/PRJCTR/blob/webinar10/index.html](https://github.com/Niko42na/PRJCTR/blob/webinar10/index.html)) напишіть селектори для наступних елементів:
+//   - для елементу з текстом 'Навігація по DOM дереву'
+//    - для першого елементу <section>
+//    - для елементу списку з текстом 'Пункт 5'
+//    - для елементу з класом 'hatredLevelBlock'
 
-//**1. Напишіть функцію `addThemAll` яка буде знаходити сумму усіх своїх аргументів незалежно від їх кількості (але без використання вбутованого об'єкту Math).
-//Використайте оператор розширення:
+//    Кожен селектор має бути унікальним (тобто всі мають бути створені за допомогою різних методів) і має бути присвоєний якійсь змінній.
+//    Приклад:
 
-function addThemAll(...args) {
-  let sum = 0;
+//    ```
+let spanWithClass = document.querySelector(".hatredLevelCounter");
+//    ```
 
-  for (let arg of args) sum += arg;
-  return sum;
-}
+//2. **Задача на обробники подій, роботу зі сховищами та атрибутами/вмістом**
 
-console.log(addThemAll(2, 4)); // 6
-console.log(addThemAll(1, 2, 3, 4)); // 10
-console.log(addThemAll(5, 5, 10)); // 20
+//    Напишіть html код який містить кнопку якраз посередині (вертикально і горизонтально) сторінки.
+//    В початковому стані - на кнопці має бути текст 'Turn off', фон сторінки має стати світлий.
 
-//**2. Задача на використання замикання. Напишіть функцію яка працює таким чином:
-/*---`multiply(a)(b)` // a * b ---*/
+//    Після натиснення - на кнопці має бути текст 'Turn on', фон сторінки має стати темний.
+//    Під кнопкою має з'явитись текстове повідомлення 'Last turn off: `{DD-MM-YYYY HH:MM:SS}`', де `{DD-MM-YYYY HH:MM:SS}` - це формат часу для виведення
+//
+//    Після повторного натиснення - на кнопці має бути текст 'Turn off', фон сторінки має стати світлий.
+//    Під кнопкою має з'явитись текстове повідомлення 'Last turn on: `{DD-MM-YYYY HH:MM:SS}`', де `{DD-MM-YYYY HH:MM:SS}` - це формат часу для виведення
 
-console.log(multiply(5)(5)); // 25
-console.log(multiply(2)(-2)); // -4
-console.log(multiply(4)(3)); // 12
+//    Стан кнопки та повідомлення останню зміну стану має зберігатись після перезавантаження/закриття сторінки.
 
-function multiply(a) {
-  return function (b) {
-    return a * b;
-  };
-}
-
-/**3. Напишіть функцію яка буде використовуватись для сортування масиву фільмів. Функція буде приймати два аргумента:
-    - властивість за якою треба посортувати
-    - опцію напрямку сортування, зростання чи спадання*/
-
-function byProperty(property, direction) {
-  let sortingOrder = 1;
-  if (direction === "<") {
-    sortingOrder = -1;
-  }
-  return function (a, b) {
-    if (a[property] < b[property]) {
-      return -1 * sortingOrder;
-    } else if (a[property] > b[property]) {
-      return 1 * sortingOrder;
-    } else {
-      return 0 * sortingOrder;
-    }
-  };
-}
-const movies = [
-  {
-    movieName: "The Thing",
-    releaseYear: 1982,
-    directedBy: "Carpenter",
-    runningTimeInMinutes: 109,
-  },
-  {
-    movieName: "Aliens",
-    releaseYear: 1986,
-    directedBy: "Cameron",
-    runningTimeInMinutes: 137,
-  },
-  {
-    movieName: "Men in Black",
-    releaseYear: 1997,
-    directedBy: "Sonnenfeld",
-    runningTimeInMinutes: 98,
-  },
-  {
-    movieName: "Predator",
-    releaseYear: 1987,
-    directedBy: "McTiernan",
-    runningTimeInMinutes: 107,
-  },
-];
-
-// *****Питання: чому якщо виводити в консоль одночасно різні за аргументами сортування масиву, то до уваги береться лише останній?*****
-
-//console.log(movies.sort(byProperty("releaseYear", ">"))); // виведе масив фільмів посортованих по року випуску, від старішого до новішого
-//console.log(movies.sort(byProperty("runningTimeInMinutes", "<"))); // виведе масив фільмів посортованих по їх тривалості, від найдовшого до найкоротшого
-console.log(movies.sort(byProperty("movieName", ">"))); // виведе масив фільмів посортованих по назві, в алфавітному порядку
-
-//**4. Напишіть функцію detonatorTimer(delay), яка виводить в консоль число кожну секунду, починаючи з delay (ціле число) і в кінці замість 0 виведе 'BOOM!'. Напишіть її двома варіантами:**
-
-// - setInterval
-
-function detonatorTimer(delay) {
-  let count = delay;
-
-  let countDown = setInterval(function () {
-    if (count === 0) {
-      console.log("BOOM!");
-      clearInterval(countDown);
-    } else {
-      console.log(count);
-    }
-    count--;
-  }, 1000);
-}
-//detonatorTimer(3);
-
-// - setTimeout
-
-function detonatorTimer2(delay) {
-  if (delay > 0) {
-    console.log(delay);
-    setTimeout(detonatorTimer2, 1000, --delay);
-  } else {
-    console.log("BOOM!");
-  }
-}
-//detonatorTimer2(3);
-
-//**5.Напишіть об'єкт в якому опишіть свої довільні властивості та довільні методи (2-3 штуки) що ці властивості виводять.
-let me = {
-  firstName: "Tetiana",
-  lastName: "Pidkova",
-  shortName: "Tania",
-  gender: "female",
-  location: "Zurich",
-  freeTimeChoices: {
-    often: "watching smth on Netflix",
-    favorite: "hiking somewhere in the mountains",
-  },
-  drinkOfChoice: "Dry martini with a lemon twist",
-  greetings() {
-    console.log(
-      `Hey there! I'm ${this.firstName} ${this.lastName}. But you can call me ${this.shortName}.`
-    );
-  },
-  tellAboutFreeTime() {
-    console.log(
-      `Mostly when I have some free time I am ${this.freeTimeChoices.often}. But my favorite thing is ${this.freeTimeChoices.favorite}`
-    );
-  },
-  tellYourDrinkOfChoice() {
-    console.log(`My drink of choice is ${this.drinkOfChoice}`);
-  },
-  askForUsersData() {
-    prompt("Tell me smth about yourself...");
-  },
-};
-//me.greetings();
-//me.tellAboutFreeTime()
-//me.tellYourDrinkOfChoice()
-//me.askForUsersData()
-
-//**6. А тепер зробіть всі свої методи з задачі `5` прив'язаними до контексту свого об'єкту - аби вони були захищені від перезапису об'єкту і їх можна було викликати в таймері:**
-
-let securedGreetings = me.greetings.bind(me);
-let securedTellAboutFreeTime = me.tellAboutFreeTime.bind(me);
-let securedTellYourDrinkOfChoice = me.tellYourDrinkOfChoice.bind(me);
-let securedAskForUsersData = me.askForUsersData.bind(me);
-
-//setTimeout(securedGreetings, 1000);
-//setTimeout(securedTellAboutFreeTime, 2000);
-//setTimeout(securedTellYourDrinkOfChoice, 3000);
-//setTimeout(securedAskForUsersData, 4000);
-
-//**7. Напишіть функцію-декоратор яка вопвільнює виконання довільної функції на вказану кількість секунд.**
-
-function someFunction(weather) {
-  console.log(`It seems like the weather today is ${weather}`);
-} // тут напишіть довільну функцію яка робить якусь роботу зі своїми аргументами та виводить результат в консоль
-
-function slower(func, seconds) {
-  let milisec = seconds * 1000;
-  return function () {
-    console.log(`Chill out, you will get your result in ${seconds} seconds`);
-    setTimeout(() => func.apply(this, arguments), milisec);
-  };
-}
-
-let slowedSomeFunction = slower(someFunction, 5); // обгортаєте свою довільну функцію 'someFunction' в декоратор
-
-slowedSomeFunction("gloomy"); /* викликаєте декоратор */
+//    Логіку роботи реалізуйте в окремому js-файлі.
