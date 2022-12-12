@@ -10,7 +10,6 @@
 
 //    Кожен селектор має бути унікальним (тобто всі мають бути створені за допомогою різних методів) і має бути присвоєний якійсь змінній.
 //    Приклад:
-
 let spanWithClass = document.querySelector(".hatredLevelCounter");
 let DOMTreeElement = document.getElementById("headerTwo");
 let firstSection = document.getElementsByTagName("section")[0];
@@ -23,6 +22,7 @@ for (const li of document.querySelectorAll("li")) {
     li.style.color = "grey";
   }
 }
+
 // Перевіряю правильність селекції зміною кольору тексту:
 
 let change1 = (DOMTreeElement.style.color = "blue");
