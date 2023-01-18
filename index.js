@@ -73,8 +73,8 @@ const girl = new Human(
   "What am I to you? A vampire??? I will just go to McDonald's 🍔🍟🥤.",
   "Everyone thinks that I am in love with Edward 🧛🏻‍♂️, but honestly I just want to become a vampire too 🧛🏻‍♀️",
   "I like to torture Jakob 🧑🏽 emotionally by givig him hope that we can be together, knowing, that is all 💩💩💩",
-  "Yoda",
   "ears, so funny.",
+  "Yoda",
   "pastafarian 🍝"
 );
 
@@ -129,7 +129,7 @@ const volturi = new Vampire(
   "Mhm, yammy 🤤 ",
   "The only one who really deserves my love is me😍, myself😍 and I😍!!!",
   "BAAAMM 💥",
-  375,
+  "Darth Vader",
   "What kind of witch 🧙🏻‍♀️ goes to the beach 🏝? A sandwich 🥪. HA-HA-HA"
 );
 /*
